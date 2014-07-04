@@ -14,7 +14,7 @@ class Roman
   #     number -= 900
   #  end
     while (number >= 500) do
-        s += "DD"
+        s += "D"
         number -= 500
     end
     
