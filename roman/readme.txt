@@ -27,3 +27,8 @@ Hindu-Arabic Roman
 500	D
 799	DCCVLXXXXIX
 1000	M
+
+
+my old code was 52 line
+new code is 18 lines
+
