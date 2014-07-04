@@ -1,7 +1,7 @@
 class Roman
 
   def self.convert(number)
-    if (number < 1 || number > 4000)
+     if (number < 1 || number > 4000)
           return "Invalid Roman Number Value"
         end
     String s = ""
@@ -50,7 +50,7 @@ class Roman
     end
  
     while (number >= 5) do
-        s += "V"
+        s += "VI"
         number -= 5 
     end
   
@@ -67,7 +67,6 @@ class Roman
   end
 end 
 
-  
   
 
  
