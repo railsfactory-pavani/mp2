@@ -50,7 +50,7 @@ class Roman
     end
  
     while (number >= 5) do
-        s += "VI"
+        s += "V"
         number -= 5 
     end
   
