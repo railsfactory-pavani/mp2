@@ -33,6 +33,11 @@ class Spell_digit
         if number < 1000000 
             return convert(number / 1000) + " thousand" + ((number % 1000 != 0) ? " " : "") + convert(number % 1000)
        end
+        if n < 1000000000 
+            return convert(n / 1000000) + " million" + ((n % 1000000 != 0) ? " " : "") + convert(n % 1000000)
+        end
+
+        return convert(n / 1000000000) + " billion"  + ((n % 1000000000 != 0) ? " " : "") + convert(n % 1000000000)
 
        
 end
