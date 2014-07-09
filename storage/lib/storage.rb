@@ -1,15 +1,14 @@
-
-
 class Storage
 
-  def self.dump(filename)
-  
-   file = File.open('todo.txt','a+') 
-   contents = ""
-   contents = file.write("world")
-   return contents
-
-  end
+  def self.dump(str)
+  f1 = File.open('todo.txt','a+')
+  f1.puts(str)
+  f1.close
+  f2 = File.open('todo.txt','r') 
+  data1 = f2.read
+  f2.close 
+  return data1.strip
+  end 
     
   def self.load
     data = ""
