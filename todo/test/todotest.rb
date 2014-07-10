@@ -34,10 +34,17 @@ class TestTodo < Test::Unit::TestCase
    assert_equal 0,Todolist.completed
    assert_equal 3,Todolist.list
  end
- def test_completed
+ def test_complete
    assert_equal "search done",Todolist.complete(1)
-   assert_equal 2,Todolist.pending
-   assert_equal 1,Todolist.completed
+   assert_equal "open done",Todolist.complete(0)
+   assert_equal 1,Todolist.pending
+   assert_equal 2,Todolist.completed
    assert_equal 3,Todolist.list
  end
+ def test_delete
+   assert_equal 1,Todolist.delete(0)
+   assert_equal 1,Todolist.pending
+   assert_equal 1,Todolist.completed
+   assert_equal 2,Todolist.list
+end
 end

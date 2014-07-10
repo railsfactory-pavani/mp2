@@ -27,12 +27,11 @@ var = @todo[num]
 @pending.delete var
 return s
 end
-def self.incomplete(num)
-@todo[num] + "done"
-var = @todo[num]
-@pending << var
-@completed.delete var
-end
+#def self.incomplete(num)
+#var = @todo[num]
+#@pending << var
+#@completed.delete var
+#end
 def self.delete(num)
 @completed.delete_at(num-1)
 return @completed.size
