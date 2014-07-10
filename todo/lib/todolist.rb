@@ -21,10 +21,11 @@ def self.add(item)
  return @pending.size
 end
 def self.complete(num)
-@todo[num] + "done"
+s = @todo[num] + " "+ "done"
 var = @todo[num]
 @completed << var
 @pending.delete var
+return s
 end
 def self.incomplete(num)
 @todo[num] + "done"
@@ -33,12 +34,12 @@ var = @todo[num]
 @completed.delete var
 end
 def self.delete(num)
-@completed.delete_at(num)
+@completed.delete_at(num-1)
 return @completed.size
 end
 def self.modify(num,item)
-@pending.delete_at(num)
 @pending[num] = item 
+return @pending[num]
 end
 def self.empty
 @pending.clear
