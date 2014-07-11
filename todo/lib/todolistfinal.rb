@@ -8,29 +8,29 @@ class Todolist
    @filename = filename
  end
 
-def self.pending
+ def self.pending
   return @pending.size
-end
+ end
 
-def self.list
+ def self.list
   @todo = @pending + @completed
- return @todo.size
-end
+  return @todo.size
+ end
 
-def self.completed
+ def self.completed
    return @completed.size
-end
+ end
 
-def self.add(title)
+ def self.add(title)
   @pending << title
- return @pending.count
-end
+  return @pending.count
+ end
 
-def self.complete(num)
-@completed << @pending[num - 1]
-@pending.delete_at(num - 1)
-return @completed.size
-end
+ def self.complete(num)
+ @completed << @pending[num - 1]
+ @pending.delete_at(num - 1)
+ return @completed.size
+ end
 
 #def self.incomplete(num)
 #var = @todo[num]
@@ -38,30 +38,30 @@ end
 #@completed.delete var
 #end
 
-def self.delete(num)
-@completed.delete_at(num - 1)
-return @completed.size
-end
+ def self.delete(num)
+  @completed.delete_at(num - 1)
+  return @completed.size
+ end
 
-def self.modify(num,title)
-@pending[num - 1] = title
-return @pending[num - 1]
-end
+ def self.modify1(num,title)
+  @pending[num - 1] = title
+  return @pending[num - 1]
+ end
 
-def self.empty
-@pending.clear
-@completed.clear
-@todo.clear
-return true
-end
+ def self.empty
+  @pending.clear
+  @completed.clear
+  @todo.clear
+  return true
+ end
 
-def self.show_pending(num)
- return @pending[num - 1]
-end
+ def self.show_pending(num)
+  return @pending[num - 1]
+ end
 
-def self.show_completed(num)
- return @completed[num - 1]
-end
+ def self.show_completed(num)
+  return @completed[num - 1]
+ end
 
 end
 #t = Todolist.new('usha.txt')
