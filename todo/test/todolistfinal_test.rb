@@ -1,88 +1,85 @@
-require_relative '../lib/todolistfinal.rb'
+require_relative  '../lib/todolistfinal'
 require 'test/unit'
 
 
 
 class TestTodo < Test::Unit::TestCase
+
+ $t = Todolist.new("todop.txt")
  
- def test_empty
-  assert_equal true,Todolist.empty
-  assert_equal 0,Todolist.pending
-  assert_equal 0,Todolist.completed
-  assert_equal 0,Todolist.list
+ def test_aaempty
+ 
+  assert_equal true,$t.empty
+  assert_equal 0,$t.pending
+  assert_equal 0,$t.completed
+  assert_equal 0,$t.list
+ end
+ def test_add1
+  assert_equal 1,$t.add("open")
+  assert_equal 1,$t.pending
+  assert_equal 0,$t.completed
+  assert_equal 1,$t.list
  end
 
-  def test_add1
-   assert_equal 1,Todolist.add("open")
-   assert_equal 1,Todolist.list
-   assert_equal 1,Todolist.pending
-   assert_equal 0,Todolist.completed
+ def test_add2
+  assert_equal 2,$t.add("search")
+  assert_equal 2,$t.pending
+  assert_equal 0,$t.completed
+  assert_equal 2,$t.list
+ end
+ 
+  def test_add3
+  assert_equal 3,$t.add("read")
+  assert_equal 3,$t.pending
+  assert_equal 0,$t.completed
+  assert_equal 3,$t.list
  end
 
-  def test_add2
-   assert_equal 2,Todolist.add("search")
-   assert_equal 2,Todolist.list
-   assert_equal 2,Todolist.pending
-   assert_equal 0,Todolist.completed
+  def test_add4
+  assert_equal 4,$t.add("write")
+  assert_equal 4,$t.pending
+  assert_equal 0,$t.completed
+  assert_equal 4,$t.list
+ end
+ 
+  def test_add5
+  assert_equal 5,$t.add("store")
+  assert_equal 5,$t.pending
+  assert_equal 0,$t.completed
+  assert_equal 5,$t.list
  end
 
- def test_add3
-   assert_equal 3,Todolist.add("write")
-   assert_equal 3,Todolist.list
-   assert_equal 3,Todolist.pending
-   assert_equal 0,Todolist.completed
+  def test_complete
+  assert_equal 1,$t.complete(1)
+  assert_equal 2,$t.complete(2)
+  assert_equal 3,$t.pending
+  assert_equal 2,$t.completed
+  assert_equal 5,$t.list
  end
 
- def test_add4
-   assert_equal 4,Todolist.add("save")
-   assert_equal 4,Todolist.list
-   assert_equal 4,Todolist.pending
-   assert_equal 0,Todolist.completed
+  def test_delete
+  assert_equal 1,$t.delete(2)
+  assert_equal 3,$t.pending
+  assert_equal 1,$t.completed
+  assert_equal 4,$t.list
+ end
+ 
+  def test_modify
+  assert_equal "merge",$t.modify1(2,"merge")
+  assert_equal "load",$t.modify1(3,"load")
+  assert_equal 3,$t.pending
+  assert_equal 1,$t.completed
+  assert_equal 4,$t.list
  end
   
- def test_add5
-   assert_equal 5,Todolist.add("split")
-   assert_equal 5,Todolist.list
-   assert_equal 5,Todolist.pending
-   assert_equal 0,Todolist.completed
- end
- 
- def test_add6
-   assert_equal 6,Todolist.add("load")
-   assert_equal 6,Todolist.list
-   assert_equal 6,Todolist.pending
-   assert_equal 0,Todolist.completed
- end
-
- def test_complete
-   assert_equal 1,Todolist.complete(1)
-   assert_equal 2,Todolist.complete(2)
-   assert_equal 4,Todolist.pending
-   assert_equal 2,Todolist.completed
-   assert_equal 6,Todolist.list
- end
-
- def test_mod1
-   assert_equal "merge",Todolist.modify1(3,"merge")
-   assert_equal "load",Todolist.modify1(4,"load")
-   assert_equal "read",Todolist.modify1(5,"read")
-   assert_equal 5,Todolist.list
-   assert_equal 3,Todolist.pending
-   assert_equal 2,Todolist.completed
- end
- 
- def test_delete
-   assert_equal 1,Todolist.delete(2)
-   assert_equal 4,Todolist.pending
-   assert_equal 1,Todolist.completed
-   assert_equal 5,Todolist.list
- end
-
- def test_show_pending
-  assert_equal "merge",Todolist.show_pending(3)
- end
-
- def test_completed
-  assert_equal "open",Todolist.show_completed(1)
- end
+  def test_pending
+   assert_equal "merge",$t.show_pending(2)
+   assert_equal "load",$t.show_pending(3)
+  end
+   
+  def test_qcompleted
+   assert_equal "open",$t.show_completed(1)
+  end
+  
 end
+ 
