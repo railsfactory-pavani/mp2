@@ -143,6 +143,22 @@ class TestTodo < Test::Unit::TestCase
    assert_equal 2,@t.list.size
  
   end
-  
-end
- 
+   
+
+
+  def test_sload
+    @t.empty
+    
+    
+   assert_equal 0,@t.pending.size
+   assert_equal 0,@t.completed.size
+    
+    
+
+    @t.load1
+   
+   
+   assert_equal 2,@t.pending.size
+   assert_equal 2,@t.completed.size
+ end
+end 

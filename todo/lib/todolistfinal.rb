@@ -2,7 +2,7 @@ class Todolist
    
 
  def initialize(filename)
-   filename = filename
+   @filename = filename
    @pending = []
    @todo = []
    @completed = []
@@ -28,6 +28,7 @@ class Todolist
 
  def add(title)
   @pending << title
+  @todo << title
   @pending
  end
 
@@ -75,5 +76,13 @@ class Todolist
  end
 
 
-end
+ 
+ def load1
+  f = File.open(@filename,"r")
+  f.each_line {|line| @todo << line}
+  @completed = @todo.select { |c| c.match("done") }
+  @pending = @todo - @completed
+ end
 
+
+end
