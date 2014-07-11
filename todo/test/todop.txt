@@ -1,0 +1,4 @@
+open done
+search done
+save pending
+write pending
