@@ -1,0 +1,4 @@
+save done
+store done
+split pending
+strip pending

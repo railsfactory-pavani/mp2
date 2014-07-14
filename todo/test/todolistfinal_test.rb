@@ -168,7 +168,7 @@ class TestTodo < Test::Unit::TestCase
    assert_equal "read done",@t.show_completed(2)
    @t.save
     
-   assert_equal 47,@t.save
+   assert_equal 4,@t.save
  end 
 
 
@@ -191,5 +191,50 @@ class TestTodo < Test::Unit::TestCase
  end
 
 
+
+  def test_save1
+   @t.empty
+
+   @t.add("split pending")
+   @t.add("save pending")
+   @t.add("store pending")
+   @t.add("strip pending")
+
+   assert_equal 4,@t.pending.size
+   assert_equal 0,@t.completed.size
+   assert_equal 4,@t.list.size
+   
+   @t.complete(2)
+   @t.complete(2)
+   
+   assert_equal 2,@t.pending.size
+   assert_equal 2,@t.completed.size
+   assert_equal 4,@t.list.size
+
+   assert_equal "save done",@t.show_completed(1)
+   assert_equal "store done",@t.show_completed(2)
+   @t.save_to("a.txt")
+    
+   assert_equal 4,@t.save_to("a.txt")
+ end 
+
+
+
+  def test_sload1
+   @t.empty
+    
+    
+   assert_equal 0,@t.pending.size
+   assert_equal 0,@t.completed.size
+    
+    
+
+    @t.load1_from("a.txt")
+    
+   assert_equal 4,@t.list.size
+   assert_equal 2,@t.pending.size
+   assert_equal 2,@t.completed.size
+   
+ end
 end
  
