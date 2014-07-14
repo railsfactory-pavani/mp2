@@ -1,4 +1,4 @@
 open done
-search done
-save pending
-write pending
+write done
+read pending
+merge pending

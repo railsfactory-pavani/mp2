@@ -6,7 +6,6 @@ class Todolist
    @pending = []
    @todo = []
    @completed = []
-   
  end
 
  def pending
@@ -77,6 +76,17 @@ class Todolist
 
 
  
+ def save
+  f = File.open(@filename, "w")
+  str =""
+  str = @todo.join("\n")
+  f.write(str)
+  f.close
+  return true
+ end
+
+
+
  def load1
   f = File.open(@filename,"r")
   f.each_line {|line| @todo << line}
