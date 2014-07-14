@@ -108,7 +108,6 @@ class TestTodo < Test::Unit::TestCase
    @t.empty
    @t.add("one")
    @t.add("two")
-  
 
    assert_equal 2,@t.pending.size
    assert_equal 0,@t.completed.size
@@ -149,27 +148,33 @@ class TestTodo < Test::Unit::TestCase
   def test_save
    @t.empty
 
-   @t.add("open done")
-   @t.add("write done")
+   @t.add("open pending")
+   @t.add("write pending")
    @t.add("read pending")
    @t.add("merge pending")
-   
+
    assert_equal 4,@t.pending.size
    assert_equal 0,@t.completed.size
    assert_equal 4,@t.list.size
    
+   @t.complete(2)
+   @t.complete(2)
+   
+   assert_equal 2,@t.pending.size
+   assert_equal 2,@t.completed.size
+   assert_equal 4,@t.list.size
+
+   assert_equal "write done",@t.show_completed(1)
+   assert_equal "read done",@t.show_completed(2)
    @t.save
     
-   assert_equal 4,@t.pending.size
-   assert_equal 0,@t.completed.size
-   assert_equal 4,@t.list.size
-   
+   assert_equal 47,@t.save
  end 
 
 
 
-  def test_tload
-    @t.empty
+  def test_sload
+   @t.empty
     
     
    assert_equal 0,@t.pending.size
@@ -179,9 +184,10 @@ class TestTodo < Test::Unit::TestCase
 
     @t.load1
     
-   
+   assert_equal 4,@t.list.size
    assert_equal 2,@t.pending.size
    assert_equal 2,@t.completed.size
+   
  end
 
 

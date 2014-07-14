@@ -13,7 +13,7 @@ class Todolist
  end
 
  def list
-  @todo = @pending + @completed
+  @todo = @completed + @pending
     @todo
  end
 
@@ -35,6 +35,9 @@ class Todolist
 
  def complete(num)
  @completed << @pending[num - 1]
+  for i in 0...@completed.size
+   @completed[i].gsub!(/pending/,'done')
+  end
  @pending.delete_at(num - 1)
  @completed
  end
@@ -43,7 +46,7 @@ class Todolist
 
  def delete(num)
   @completed.delete_at(num - 1)
-   @completed
+  @completed
  end
 
 
@@ -82,14 +85,14 @@ class Todolist
   str = @todo.join("\n")
   f.write(str)
   f.close
-  return true
+  return File.new(@filename).size
  end
 
 
 
  def load1
   f = File.open(@filename,"r")
-  f.each_line {|line| @todo << line}
+  f.each_line {|line| @todo << line.strip}
   @completed = @todo.select { |c| c.match("done") }
   @pending = @todo - @completed
  end

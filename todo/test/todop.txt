@@ -1,4 +1,4 @@
-open done
 write done
-read pending
+read done
+open pending
 merge pending
